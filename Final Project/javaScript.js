@@ -4,7 +4,7 @@ function setup(){
 function draw() {
     background(51);
 
-    var len= 100;
+    var len = 100;
     stroke(225);
     line(200, height, 200, height - len);
 }
