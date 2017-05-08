@@ -15,6 +15,86 @@
             var ctx = myCanvas.getContext("2d");
 
             //Start drawing
+            function checkIfBelongstoSet(x,y){
+                var realComponentOfResult=x;
+                var imaginaryComponentofResult=y;
+                var max_iterations=40;
+                for(var i=0; i<max_iterations; i++){
+                    var tempRealComponent=realComponentOfResult*realComponentOfResult-imaginaryComponentofResult*imaginaryComponentofResult+x;
+                    var tempImagineryComponent=2*realComponentOfResult*imaginaryComponentofResult+y;
+                    realComponentOfResult=tempRealComponent;
+                    imaginaryComponentofResult=tempImagineryComponent;
+                }
+                if(realComponentOfResult*imaginaryComponentofResult>5)
+                    return (i/max_iterations*100);
+                return 0;
+            }
+            var magnificationFactor=2900;
+            var panX=0.7;
+            var panY=0.6;
+            for(var x=0; x<myCanvas.width; x++){
+                for(var y=0; y<myCanvas.height; y++){
+                    var belongsToSet=
+                            checkIfBelongstoSet(x/magnificationFactor-panX, y/magnificationFactor-panY);
+                    if(belongsToSet){
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                    if(belongsToSet ==0){
+                        ctx.fillStyle='#000';
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                    else{
+                        ctx.fillStyle='hsl(280,70%,40%)';
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                }
+            }
+
+        })();
+        (function(){
+            //create canvas
+            var myCanvas=document.createElement("canvas");
+            myCanvas.width=;
+            myCanvas.height=600;
+            document.body.appendChild(myCanvas);
+            var ctx = myCanvas.getContext("2d");
+
+            //Start drawing
+            function checkIfBelongstoSet(x,y){
+                var realComponentOfResult=x;
+                var imaginaryComponentofResult=y;
+                var max_iterations=40;
+                for(var i=0; i<max_iterations; i++){
+                    var tempRealComponent=realComponentOfResult*realComponentOfResult-imaginaryComponentofResult*imaginaryComponentofResult+x;
+                    var tempImagineryComponent=2*realComponentOfResult*imaginaryComponentofResult+y;
+                    realComponentOfResult=tempRealComponent;
+                    imaginaryComponentofResult=tempImagineryComponent;
+                }
+                if(realComponentOfResult*imaginaryComponentofResult>5)
+                    return (i/max_iterations*100);
+                return 0;
+            }
+            var magnificationFactor=2900;
+            var panX=0.7;
+            var panY=0.6;
+            for(var x=0; x<myCanvas.width; x++){
+                for(var y=0; y<myCanvas.height; y++){
+                    var belongsToSet=
+                            checkIfBelongstoSet(x/magnificationFactor-panX, y/magnificationFactor-panY);
+                    if(belongsToSet){
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                    if(belongsToSet ==0){
+                        ctx.fillStyle='#000';
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                    else{
+                        ctx.fillStyle='hsl(280,70%,40%)';
+                        ctx.fillRect(x, y, 1, 1);
+                    }
+                }
+            }
+
         })();
 
     </script>
