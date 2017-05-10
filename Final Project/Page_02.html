@@ -24,20 +24,23 @@
     }
 
 
-    function drawTree(x1, y1, angle, depth, width){
+    function drawTree(x1, y1, angle, depth){
         if (depth!== 0){
             var x2 = x1 + (Math.cos(angle * deg_to_rad) * depth * 10.0);
             var y2 = y1 + (Math.sin(angle * deg_to_rad) * depth * 10.0);
-            drawLine(x1, y1, x2, y2, depth - 1, width * 0.8);
-            drawTree(x2, y2, angle - 20, depth - 1, width * 0.8 );
-            drawTree(x2, y2, angle + 20, depth - 1, width * 0.8);
+            drawLine(x1, y1, x2, y2, depth - 1);
+            drawTree(x2, y2, angle - 20, depth - 1 );
+            drawTree(x2, y2, angle + 20, depth - 1);
+            canvas.arc(400,500, 1,0, Math.PI/2);
+
         }
     }
+
     canvas.strokeStyle = "darkgreen";
     canvas.fillStyle = "green";
 
     canvas.beginPath();
-    drawTree(400, 600, -90, depth, canvas.lineWidth * 0.8);
+    drawTree(400, 600, -90, depth, 2);
     canvas.closePath();
     canvas.stroke();
     canvas.fill();
