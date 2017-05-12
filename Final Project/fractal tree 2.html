@@ -46,31 +46,6 @@
 
     draw(500,600,120,0,10);
 
-    function canvasDraw(angleOffset) {
-        canvas.clearRect(0, 0, canvas.width, canvas.height);
-        canvas.beginPath();
-        drawTree(300, 370, -90, angleOffset, depth);
-        canvas.closePath();
-        canvas.stroke();
-    }
-
-    var k = 1;
-    function quick_demo() {
-        canvasDraw(k++);
-        if (k <= 90) requestAnimationFrame(quick_demo);
-    }
-
-    function getAngle(x) {
-        return parseInt(1 + 89 * x / $(window).width());
-    }
-
-    $(document).ready(function() {
-        quick_demo();
-        canvasDraw(20);
-        (window).mousemove(function(e) {
-            canvasDraw(getAngle(e.pageX));
-    });
-    });
 
 
 
