@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Fractal Tree</title>
 </head>
 <body>
 
@@ -12,6 +12,7 @@
     var x = document.getElementById('canvas');
     var canvas = x.getContext('2d');
 
+
     function draw(startX, startY, len, angle, branchWidth){
         canvas.beginPath();
         canvas.save();
@@ -20,6 +21,7 @@
         canvas.fillStyle = "green";
         canvas.shadowBlur = 10;
         canvas.shadowColor = "rgba(0,0,0,0.5)";
+
 
         canvas.translate(startX, startY);
         canvas.rotate(angle * Math.PI/100);
