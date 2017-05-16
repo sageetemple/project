@@ -97,8 +97,17 @@ window.onload = function(){
     var zoom=function(clicks){
         var pt=ctx.transformedPoint(lastX,lastY);
         ctx.translate(pt.x, pt.y);
-        
-    }
+        var factor = Math.pow(scaleFactor,clicks);
+            ctx.scale(factor,factor);
+            ctx.translate(-pt.x,-pt.y);
+            redraw();
+    };
+    var handleScroll=function(evt){
+        var delta=evt.wheelDelta ?
+            evt.wheelDelta/40 : evt.detail ? -evt.detail : 0;
+                if (delta) zoom(delta);
+                return evt.preventDefault() && false;
+    };
 
-}
+};
 
