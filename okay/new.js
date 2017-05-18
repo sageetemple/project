@@ -45,6 +45,8 @@
             }
         }
     }
+
+
 var frac=draw();
 window.onload = function(){
     var ctx=canvas.getContext('2d');
@@ -103,11 +105,13 @@ window.onload = function(){
             redraw();
     };
     var handleScroll=function(evt){
-        var delta=evt.wheelDelta ?
+        var delta=evt.wheelDelta ? //the change in the scroll
             evt.wheelDelta/40 : evt.detail ? -evt.detail : 0;
                 if (delta) zoom(delta);
-                return evt.preventDefault() && false;
+                return evt.preventDefault() && false; //get rid of scroll default (normally scroll through page)
     };
+    canvas.addEventListener('DOMMouseScroll', handleScroll, false);
 
+    canvas.addEventListener('mousewheel', handleScroll, false);
 };
 
