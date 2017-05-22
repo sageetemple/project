@@ -1,54 +1,12 @@
 /**
- * Created by templetons0379 on 5/9/2017.
+ * Created by templetons0379 on 5/22/2017.
  */
-    //create canvas
-    var canvas=document.createElement("canvas");
-    canvas.width=1500;
-    canvas.height=1000;
-    document.body.appendChild(canvas);
-    var ctx = canvas.getContext("2d");
+var canvas=document.getElementsByTagName('canvas')[0];
+canvas.width=500;
+canvas.height=600;
+var frac= new Image;
 
-    function draw(){
-        //Start drawing
-        function checkIfBelongstoSet(x,y){
-            var realComponentOfResult=x;
-            var imaginaryComponentofResult=y;
-            var max_iterations=25;
-            for(var i=0; i<max_iterations; i++){
-                var tempRealComponent=realComponentOfResult*realComponentOfResult-imaginaryComponentofResult*imaginaryComponentofResult+x;
-                var tempImagineryComponent=2*realComponentOfResult*imaginaryComponentofResult+y;
-                realComponentOfResult=tempRealComponent;
-                imaginaryComponentofResult=tempImagineryComponent;
-            }
-            if(realComponentOfResult*imaginaryComponentofResult>5)
-                return (i/max_iterations*100);
-            return 0;
-        }
-        var magnificationFactor=500;
-        var panX=1.4;
-        var panY=1;
-        for(var x=0; x<canvas.width; x++){
-            for(var y=0; y<canvas.height; y++){
-                var belongsToSet=
-                    checkIfBelongstoSet(x/magnificationFactor-panX, y/magnificationFactor-panY);
-                if(belongsToSet){
-                    ctx.fillRect(x, y, 1, 1);
-                }
-                if(belongsToSet ==0){
-                    ctx.fillStyle='#000';
-                    ctx.fillRect(x, y, 1, 1);
-                }
-                else{
-                    ctx.fillStyle='hsl(280,70%,40%)';
-                    ctx.fillRect(x, y, 1, 1);
-                }
-            }
-        }
-    }
-
-
-var frac=draw();
-window.onload = function() {
+    window.onload = function() {
     var ctx = canvas.getContext('2d');
     trackTransforms(ctx);
 
@@ -115,6 +73,8 @@ window.onload = function() {
 
     canvas.addEventListener('mousewheel', handleScroll, false);
 };
+
+frac.src="https://i.ytimg.com/vi/8ma6cV6fw24/hqdefault.jpg";
 
 function trackTransforms(ctx){
     var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg'); //svg=scalar vector graphics; object oriented vector drawing system; makes animation easier
