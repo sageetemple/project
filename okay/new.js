@@ -16,9 +16,9 @@
             var max_iterations=25;
             for(var i=0; i<max_iterations; i++){
                 var tempRealComponent=realComponentOfResult*realComponentOfResult-imaginaryComponentofResult*imaginaryComponentofResult+x;
-                var tempImagineryComponent=2*realComponentOfResult*imaginaryComponentofResult+y;
+                var tempImaginaryComponent=2*realComponentOfResult*imaginaryComponentofResult+y;
                 realComponentOfResult=tempRealComponent;
-                imaginaryComponentofResult=tempImagineryComponent;
+                imaginaryComponentofResult=tempImaginaryComponent;
             }
             if(realComponentOfResult*imaginaryComponentofResult>5)
                 return (i/max_iterations*100);
