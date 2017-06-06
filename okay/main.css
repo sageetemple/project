@@ -1,0 +1,35 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    font: bold 50px Tahoma;
+    text-align: center;
+}
+
+h2{
+    font: bold 30px Tahoma;
+    text-align: center;
+}
+
+header, section, article {
+    display: block;
+}
+
+#first {
+    border: 1px solid darkcyan;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-ordinal-group:1;
+    -webkit-flex: 1500px;
+}
+
+#second {
+    border: 1px solid darkcyan;
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-ordinal-group:2;
+    -webkit-flex: 1500px;
+}
+
