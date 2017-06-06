@@ -5,11 +5,45 @@
     <title>Koch Curve</title>
 </head>
 <body>
-    <canvas id = "my_canvas" width = "700" height = "600"></canvas>
+    <canvas id = "my_canvas" width = "1000" height = "900"></canvas>
 <script>
     var myCanvas = document.getElementById("my_canvas");
     var canvas = myCanvas.getContext("2d");
 
+    function generateSequence() {
+        var sequence = "0";
+        for (var i = 0; i < 20; i++) {
+            var parts = sequence.split("");
+            var complement = "";
+            for (var j = 0; j < parts.length; j++) {
+                complement = complement +
+                        (parts[j] == "0" ? "1" : "0");
+            }
+            sequence += complement;
+        }
+        return sequence;
+    }
+
+    function draw(){
+        var sequence = generateSequence();
+        var parts = sequence.split("");
+        canvas.translate(0,myCanvas.height);
+        canvas.beginPath();
+        canvas.moveTo(0,0);
+        for(var i = 0; i < parts.length; i++){
+            if(parts[i] == "0"){
+                canvas.translate(0,0.1);
+                canvas.lineTo(0,0.1);
+            } else{
+                canvas.rotate(Math.PI/3);
+            }
+        }
+        canvas.stroke();
+
+    }
+    canvas.strokeStyle = "#f49542";
+    canvas.stroke();
+    draw();
 
 </script>
 </body>
