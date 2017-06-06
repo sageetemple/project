@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id = "canvas" width = "800" height = "600"></canvas>
+
+<script type = "text/javascript">
+    var x = document.getElementById('canvas');
+    var canvas = x.getContext('2d');
+
+
+    canvas.fillStyle = '#000';
+    canvas.lineWidth  = 2 ;
+
+    var deg_to_rad = Math.PI / 180.0;
+    var depth = 10;
+
+    function drawLine(x1, y1, x2, y2){
+        canvas.moveTo(x1, y1);
+        canvas.lineTo(x2, y2);
+    }
+
+
+    function drawTree(x1, y1, angle, depth){
+        if (depth!== 0){
+            var x2 = x1 + (Math.cos(angle * deg_to_rad) * depth * 10.0);
+            var y2 = y1 + (Math.sin(angle * deg_to_rad) * depth * 10.0);
+            drawLine(x1, y1, x2, y2, depth - 1);
+            drawTree(x2, y2, angle - 20, depth - 1 );
+            drawTree(x2, y2, angle + 20, depth - 1);
+            canvas.arc(400,500, 1,0, Math.PI/2);
+
+        }
+    }
+
+    canvas.strokeStyle = "darkgreen";
+    canvas.fillStyle = "green";
+
+    canvas.beginPath();
+    drawTree(400, 600, -90, depth, 2);
+    canvas.closePath();
+    canvas.stroke();
+    canvas.fill();
+    canvas.shadowBlue = 15;
+    canvas.shadowColor = "rgba(0,0,0,0.8)";
+
+
+</script>
+</body>
+</html>
