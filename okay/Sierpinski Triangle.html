@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sierpinski Triangle</title>
+</head>
+<body>
+<canvas id = "sierpinskiCanvas" width = "600" height = "470"></canvas>
+<script>
+    var width = 600;
+    var height = 600;
+    var size = 500;
+
+    function sierpinski(ax, ay, bx, by, cx, cy, d, ctx){
+        if (d > 0 ){
+            var pointax = (bx + cx)/2;
+            var pointay = (by + cy)/2;
+
+            var pointbx = (ax + cx)/2;
+            var pointby = (ay + cy)/2;
+
+            var pointcx = (ax + bx)/2;
+            var pointcy = (ay + by)/2;
+
+            var d2 = d - 1;
+            sierpinski(ax, ay, pointbx, pointby, pointcx, pointcy, d2, ctx);
+            sierpinski(pointcx, pointcy, pointax, pointay, bx, by, d2, ctx);
+            sierpinski(pointbx, pointby, pointax, pointay, cx, cy, d2, ctx);
+        }
+        else{
+            ctx. moveTo(ax, ay);
+            ctx. lineTo(bx, by);
+            ctx. lineTo(cx, cy);
+            ctx. lineTo(ax, ay);
+
+        }
+    }
+
+    function drawSierpinski(ctx){
+        var midPointX = width/2;
+        var midPointY = height/2;
+
+        var deep = 5;
+
+        var ri = (size/6) * Math.sqrt(3);
+        var ru = (size/3) * Math.sqrt(3);
+
+        var pointax = midPointX - (size/2);
+        var pointay = midPointY + ri;
+
+        var pointbx = midPointX + (size/2);
+        var pointby = midPointY + ri;
+
+        var pointcx = midPointX;
+        var pointcy = midPointY - ru;
+
+        sierpinski(pointax, pointay, pointbx, pointby, pointcx, pointcy, deep, ctx);
+
+
+    }
+
+    var ctx = document.getElementById("sierpinskiCanvas").getContext("2d");
+    drawSierpinski(ctx);
+    ctx.fillStyle = '#f2ec35';
+    ctx.fill();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+
+
+</script>
+
+</body>
+</html>
