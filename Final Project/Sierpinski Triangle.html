@@ -40,11 +40,35 @@
         var midPointX = width/2;
         var midPointY = height/2;
 
-        var deep = 4;
+        var deep = 5;
 
         var ri = (size/6) * Math.sqrt(3);
-        var ru = (size/3) * Math.sqrt
+        var ru = (size/3) * Math.sqrt(3);
+
+        var pointax = midPointX - (size/2);
+        var pointay = midPointY + ri;
+
+        var pointbx = midPointX + (size/2);
+        var pointby = midPointY + ri;
+
+        var pointcx = midPointX;
+        var pointcy = midPointY - ru;
+
+        sierpinski(pointax, pointay, pointbx, pointby, pointcx, pointcy, deep, ctx);
+
+
     }
+
+    var ctx = document.getElementById("sierpinskiCanvas").getContext("2d");
+    drawSierpinski(ctx);
+    ctx.fillStyle = '#f2ec35';
+    ctx.fill();
+    ctx.strokeStyle = 'black';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+
+
 </script>
 
 </body>
